@@ -56,6 +56,8 @@ int main(int argc, char const *argv[])
         exit(EXIT_FAILURE);
     }
 
+    // Here we create a child process and drop its privilege to prevent from 
+    // potential threats from connections and subsequent request(s).
     forkAndDrop();
 
     printf("Waiting for client message ...\n"); 
@@ -65,6 +67,8 @@ int main(int argc, char const *argv[])
         perror("accept");
         exit(EXIT_FAILURE);
     }
+
+    printf("New connection accepted.\n");
 
     valread = read( new_socket , buffer, 1024);
     printf("%s\n",buffer );
@@ -82,17 +86,17 @@ void forkAndDrop() {
     }
 
     if (pid > 0) {
-        printf("*****     In parent process waiting for child to exit ...\n\n");
+        printf("*****\tPARENT: Waiting for child %d to exit ...\n\n", pid);
         
         int status;
 
         waitpid(pid, &status, 0);
-        printf("Child process %d exit with status %d.", pid, status);
+        printf("*****\tPARENT: Child process %d exited with status %d.", pid, status);
         
         exit(0);
     }
 
-    printf("*****     In child process %d\n\n", getpid());
+    printf("*****\tCHILD: child process %d initiated.\n\n", getpid());
     printf("Current uid: %d\n", getuid());
 
 
@@ -114,5 +118,4 @@ void forkAndDrop() {
 
     printf("Successfully set user to nobody.\n");
     printf("Updated uid: %d\n\n", getuid());
-
 }
