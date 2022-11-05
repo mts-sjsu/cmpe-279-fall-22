@@ -9,3 +9,4 @@
 3. `sudo ./server` in one terminal session and `./client` in another
 
 ## Output 
+![Screen Shot 2022-11-05 at 16 51 27](https://user-images.githubusercontent.com/100324756/200147519-15088dc2-b103-464d-b60e-6e927210307f.png)
