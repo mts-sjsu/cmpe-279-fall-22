@@ -11,7 +11,7 @@
 ## Teamwork:
 Mu-Te Shen:
 * Did the research and collaborated with team member to work on the implementation part of the assignment.\
-* Implemented the program.\
+* Implemented the program.
 Shereen Punnassery: 
 * Did the research and collaborated with team member to work on the implemntation part of the assignment.\
 * Tested and verified the the proper working of the program.
